@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Translivo — Politica de Privacidad</title>
+  <style>
+    :root {
+      --bg: #0c0e15; --t1: #eaecf4; --t2: #8c93ac; --cyan: #22d4be; --border: #282f35;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+      background: var(--bg); color: var(--t1);
+      max-width: 720px; margin: 0 auto; padding: 40px 24px 80px;
+      line-height: 1.6;
+    }
+    h1 { font-size: 24px; margin-bottom: 4px; }
+    h2 { font-size: 16px; margin-top: 32px; color: var(--cyan); }
+    p, li { color: var(--t2); font-size: 14px; }
+    a { color: var(--cyan); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .updated { font-size: 12px; color: var(--t2); margin-bottom: 24px; }
+    code { background: #1a1e2c; padding: 2px 6px; border-radius: 4px; font-size: 13px; }
+    hr { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+  </style>
+</head>
+<body>
+  <h1>Translivo — Politica de Privacidad</h1>
+  <p class="updated">Ultima actualizacion: 2026-06-12</p>
+
+  <p>
+    Translivo es una extension de Chrome que traduce y narra en voz alta, en tiempo real,
+    los subtitulos en ingles de Bloomberg TV al espanol. Esta extension no esta afiliada,
+    respaldada ni patrocinada por Bloomberg L.P.
+  </p>
+
+  <h2>Que datos procesa la extension</h2>
+  <p>
+    Mientras la extension esta activa en una pestana de <code>bloomberg.com</code>, lee el
+    texto de los subtitulos (closed captions) que se muestran en el reproductor de video
+    para traducirlos y leerlos en voz alta. No se procesa ningun otro contenido de la pagina,
+    ni de ninguna otra pestana o sitio web.
+  </p>
+
+  <h2>A donde se envian esos datos</h2>
+  <p>El texto de los subtitulos se envia, segun la configuracion del usuario, a:</p>
+  <ul>
+    <li>
+      <strong>Groq API</strong> (<code>api.groq.com</code>) — solo si el usuario configuro su
+      propia clave de API en Opciones, para obtener una traduccion al espanol orientada a
+      terminologia financiera. Ver
+      <a href="https://groq.com/privacy-policy/" target="_blank" rel="noopener">politica de privacidad de Groq</a>.
+    </li>
+    <li>
+      <strong>Google Translate</strong> (<code>translate.googleapis.com</code>) — usado como
+      traductor alternativo cuando no hay clave de Groq configurada o se alcanzo el limite de uso.
+      Ver
+      <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">politica de privacidad de Google</a>.
+    </li>
+  </ul>
+  <p>
+    Ningun otro servidor, propio o de terceros, recibe estos datos. El desarrollador de
+    Translivo no opera servidores ni recibe, almacena o tiene acceso a los subtitulos
+    traducidos ni a ningun otro dato del usuario.
+  </p>
+
+  <h2>Datos almacenados localmente</h2>
+  <p>
+    La extension guarda en <code>chrome.storage.sync</code> (almacenamiento sincronizado de
+    Chrome, asociado a la cuenta de Google del usuario) las siguientes preferencias:
+  </p>
+  <ul>
+    <li>La clave de API de Groq, si el usuario decide ingresar una (opcional).</li>
+    <li>La voz y velocidad de lectura preferidas.</li>
+  </ul>
+  <p>
+    Estos datos quedan sincronizados entre los dispositivos del usuario a traves de su
+    cuenta de Google, de la misma forma que cualquier otra preferencia de Chrome. El
+    desarrollador de la extension no tiene acceso a esta informacion.
+  </p>
+
+  <h2>Lo que la extension NO hace</h2>
+  <ul>
+    <li>No recopila datos de navegacion, historial ni analiticas de uso.</li>
+    <li>No usa cookies ni identificadores de seguimiento propios.</li>
+    <li>No vende ni comparte datos con anunciantes ni con terceros distintos de los
+        mencionados arriba (Groq / Google Translate), y solo para cumplir la funcion
+        de traduccion.</li>
+    <li>Solo funciona en paginas de <code>bloomberg.com</code>.</li>
+  </ul>
+
+  <h2>Contacto</h2>
+  <p>
+    Para preguntas sobre esta politica de privacidad, contactar a:
+    <a href="mailto:nachocantarino@gmail.com">nachocantarino@gmail.com</a>
+  </p>
+
+  <hr>
+  <p style="font-size:12px">
+    "Bloomberg" y "Bloomberg TV" son marcas de Bloomberg L.P. Translivo es un proyecto
+    independiente, sin afiliacion con Bloomberg L.P.
+  </p>
+</body>
+</html>
