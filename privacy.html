@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Translivo — Politica de Privacidad</title>
+  <title>Tolk — Política de Privacidad</title>
   <style>
     :root {
       --bg: #0c0e15; --t1: #eaecf4; --t2: #8c93ac; --cyan: #22d4be; --border: #282f35;
@@ -26,80 +26,106 @@
   </style>
 </head>
 <body>
-  <h1>Translivo — Politica de Privacidad</h1>
-  <p class="updated">Ultima actualizacion: 2026-06-12</p>
+  <h1>Tolk — Política de Privacidad</h1>
+  <p class="updated">Última actualización: 2026-09-13</p>
 
   <p>
-    Translivo es una extension de Chrome que traduce y narra en voz alta, en tiempo real,
-    los subtitulos en ingles de Bloomberg TV al espanol. Esta extension no esta afiliada,
-    respaldada ni patrocinada por Bloomberg L.P.
+    Tolk es una extensión de Chrome que traduce y narra en voz alta, en el momento en que
+    se dicen, los subtítulos en inglés de Bloomberg TV y de CNBC. Esta extensión no está
+    afiliada, respaldada ni patrocinada por Bloomberg L.P. ni por CNBC.
   </p>
 
-  <h2>Que datos procesa la extension</h2>
+  <h2>Qué datos procesa la extensión</h2>
   <p>
-    Mientras la extension esta activa en una pestana de <code>bloomberg.com</code>, lee el
-    texto de los subtitulos (closed captions) que se muestran en el reproductor de video
-    para traducirlos y leerlos en voz alta. No se procesa ningun otro contenido de la pagina,
-    ni de ninguna otra pestana o sitio web.
+    Mientras Tolk está activa en una pestaña de <code>bloomberg.com</code> o de
+    <code>cnbc.com</code>, lee el texto de los subtítulos (closed captions) que el propio
+    canal muestra en su reproductor, para traducirlo y narrarlo en voz alta. No se procesa
+    ningún otro contenido de la página, ni de ninguna otra pestaña o sitio web, ni el video
+    o el audio de la transmisión en sí.
   </p>
 
-  <h2>A donde se envian esos datos</h2>
-  <p>El texto de los subtitulos se envia, segun la configuracion del usuario, a:</p>
+  <h2>A dónde se envía el texto del subtítulo</h2>
+  <p>Cada fragmento de subtítulo se envía, para traducirlo, a uno de estos servicios:</p>
   <ul>
     <li>
-      <strong>Groq API</strong> (<code>api.groq.com</code>) — solo si el usuario configuro su
-      propia clave de API en Opciones, para obtener una traduccion al espanol orientada a
-      terminologia financiera. Ver
-      <a href="https://groq.com/privacy-policy/" target="_blank" rel="noopener">politica de privacidad de Groq</a>.
+      <strong>Google Gemini</strong> (<code>generativelanguage.googleapis.com</code>) — el
+      traductor principal, usando la clave de API que el propio usuario crea con su cuenta
+      de Google y configura en Opciones. Ver
+      <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">política de privacidad de Google</a>.
     </li>
     <li>
-      <strong>Google Translate</strong> (<code>translate.googleapis.com</code>) — usado como
-      traductor alternativo cuando no hay clave de Groq configurada o se alcanzo el limite de uso.
-      Ver
-      <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">politica de privacidad de Google</a>.
+      <strong>Groq</strong> (<code>api.groq.com</code>) — traductor de respaldo, opcional, y
+      solo si el usuario configuró su propia clave de API en Opciones. Ver
+      <a href="https://groq.com/privacy-policy/" target="_blank" rel="noopener">política de privacidad de Groq</a>.
+    </li>
+    <li>
+      <strong>Google Translate</strong> (<code>translate.googleapis.com</code>) — último
+      recurso, usado solo si los dos anteriores no responden, para que la narración no se
+      corte en medio de una transmisión en vivo.
     </li>
   </ul>
   <p>
-    Ningun otro servidor, propio o de terceros, recibe estos datos. El desarrollador de
-    Translivo no opera servidores ni recibe, almacena o tiene acceso a los subtitulos
-    traducidos ni a ningun otro dato del usuario.
+    Ningún otro servidor, propio o de terceros, recibe el texto del subtítulo. El
+    desarrollador de Tolk no opera servidores de traducción ni recibe, almacena o tiene
+    acceso a los subtítulos ni a su traducción: se traducen, se narran y se descartan.
+  </p>
+
+  <h2>La voz corre en el equipo del usuario</h2>
+  <p>
+    La narración la genera un motor de voz (Piper, vía WebAssembly) que corre dentro de
+    Chrome, en el computador del usuario. La primera vez que Tolk narra, descarga el
+    modelo de voz una sola vez desde <code>huggingface.co</code> y lo deja guardado
+    localmente — son los pesos de un modelo (datos), nunca código ejecutable. Después de
+    esa descarga, la voz no depende de internet ni envía nada a ningún servidor.
+  </p>
+
+  <h2>Validación de licencia</h2>
+  <p>
+    Tolk requiere una clave de licencia para funcionar. Para validarla, la extensión envía
+    la clave a un servidor propio en Supabase (<code>plezumkexvvenavskjgm.supabase.co</code>)
+    y, mientras narra, registra ahí un conteo de uso: minutos narrados, cantidad de bloques
+    y caracteres traducidos, y qué motor de traducción se usó. Ese registro no incluye el
+    texto de los subtítulos ni su traducción, y no identifica a la persona más allá de la
+    clave de licencia que ella misma ingresó.
   </p>
 
   <h2>Datos almacenados localmente</h2>
   <p>
-    La extension guarda en <code>chrome.storage.sync</code> (almacenamiento sincronizado de
-    Chrome, asociado a la cuenta de Google del usuario) las siguientes preferencias:
+    Tolk guarda en <code>chrome.storage</code> (almacenamiento propio de la extensión,
+    dentro del navegador) lo siguiente:
   </p>
   <ul>
-    <li>La clave de API de Groq, si el usuario decide ingresar una (opcional).</li>
-    <li>La voz y velocidad de lectura preferidas.</li>
+    <li>La clave de licencia de Tolk.</li>
+    <li>La clave de API de Google Gemini y, si el usuario decide ingresarla, la de Groq.</li>
+    <li>Las preferencias de voz, velocidad, volumen y tamaño del subtítulo.</li>
   </ul>
   <p>
-    Estos datos quedan sincronizados entre los dispositivos del usuario a traves de su
-    cuenta de Google, de la misma forma que cualquier otra preferencia de Chrome. El
-    desarrollador de la extension no tiene acceso a esta informacion.
+    Parte de estos datos usan <code>chrome.storage.sync</code>, que Chrome sincroniza entre
+    los dispositivos del usuario a través de su cuenta de Google, igual que cualquier otra
+    preferencia del navegador. El desarrollador de la extensión no tiene acceso a esta
+    información: vive en el navegador del usuario, no en un servidor de Tolk.
   </p>
 
-  <h2>Lo que la extension NO hace</h2>
+  <h2>Lo que Tolk NO hace</h2>
   <ul>
-    <li>No recopila datos de navegacion, historial ni analiticas de uso.</li>
+    <li>No recopila historial de navegación ni analíticas de uso fuera de lo descrito arriba.</li>
     <li>No usa cookies ni identificadores de seguimiento propios.</li>
     <li>No vende ni comparte datos con anunciantes ni con terceros distintos de los
-        mencionados arriba (Groq / Google Translate), y solo para cumplir la funcion
-        de traduccion.</li>
-    <li>Solo funciona en paginas de <code>bloomberg.com</code>.</li>
+        mencionados en esta política, y solo para cumplir la función de traducción y de
+        validación de licencia.</li>
+    <li>Solo funciona en páginas de <code>bloomberg.com</code> y de <code>cnbc.com</code>.</li>
   </ul>
 
   <h2>Contacto</h2>
   <p>
-    Para preguntas sobre esta politica de privacidad, contactar a:
+    Para preguntas sobre esta política de privacidad, contactar a:
     <a href="mailto:nachocantarino@gmail.com">nachocantarino@gmail.com</a>
   </p>
 
   <hr>
   <p style="font-size:12px">
-    "Bloomberg" y "Bloomberg TV" son marcas de Bloomberg L.P. Translivo es un proyecto
-    independiente, sin afiliacion con Bloomberg L.P.
+    "Bloomberg" y "Bloomberg TV" son marcas de Bloomberg L.P. "CNBC" es marca de NBCUniversal
+    Media, LLC. Tolk es un proyecto independiente, sin afiliación con ninguna de las dos.
   </p>
 </body>
 </html>
