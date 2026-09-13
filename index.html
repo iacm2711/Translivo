@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tolk</title>
+  <style>
+    :root {
+      --bg: #0c0e15; --t1: #eaecf4; --t2: #8c93ac; --cyan: #22d4be; --border: #282f35;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+      background: var(--bg); color: var(--t1);
+      max-width: 720px; margin: 0 auto; padding: 56px 24px 80px;
+      line-height: 1.6;
+    }
+    h1 { font-size: 32px; margin: 0 0 6px; letter-spacing: -0.02em; }
+    .tag { font-size: 16px; color: var(--t2); margin: 0 0 32px; }
+    h2 { font-size: 15px; margin-top: 32px; color: var(--cyan); text-transform: uppercase; letter-spacing: 0.04em; }
+    p, li { color: var(--t2); font-size: 15px; }
+    ul { padding-left: 20px; }
+    a { color: var(--cyan); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    code { background: #1a1e2c; padding: 2px 6px; border-radius: 4px; font-size: 13px; color: var(--t1); }
+    hr { border: none; border-top: 1px solid var(--border); margin: 40px 0 24px; }
+    .foot { font-size: 12px; color: var(--t2); }
+  </style>
+</head>
+<body>
+  <h1>Tolk</h1>
+  <p class="tag">Traduce y narra en voz alta, en el momento, los subtítulos en inglés de CNBC y Bloomberg TV.</p>
+
+  <p>
+    Tolk lee los subtítulos que el propio canal emite, los traduce al español y los lee
+    en voz alta mientras se dicen. No graba, no descarga y no redistribuye el video ni el
+    audio de la transmisión.
+  </p>
+
+  <h2>Cómo funciona</h2>
+  <ul>
+    <li>Traducción en el momento, con Google Gemini, usando la clave de API del propio usuario.</li>
+    <li>Narración con un motor de voz que corre dentro de Chrome, en el computador del usuario.</li>
+    <li>Los subtítulos se muestran sobre el video en una placa sobria, pensada para tener la
+      transmisión al lado del trabajo durante horas.</li>
+  </ul>
+
+  <h2>Requiere</h2>
+  <ul>
+    <li>Google Chrome 116 o posterior, en Windows o en Mac.</li>
+    <li>Una clave de Google Gemini, gratuita, creada con la cuenta del propio usuario.</li>
+    <li>Una clave de licencia de Tolk.</li>
+  </ul>
+
+  <h2>Contacto</h2>
+  <p>
+    <a href="mailto:nachocantarino@gmail.com">nachocantarino@gmail.com</a>
+  </p>
+
+  <hr>
+  <p class="foot">
+    Tolk es un producto de Computín. No está afiliado, patrocinado ni respaldado por
+    Bloomberg L.P. ni por CNBC. Ver la <a href="./privacy.html">política de privacidad</a>.
+  </p>
+</body>
+</html>
